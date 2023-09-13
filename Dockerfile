@@ -2,7 +2,7 @@ FROM node:lts-alpine AS backend
 
 ENV NODE_ENV=development
 
-WORKDIR /usr/src/backend
+WORKDIR /usr/src/
 
 RUN yarn global add nodemon
 

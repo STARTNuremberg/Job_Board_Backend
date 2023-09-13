@@ -28,7 +28,7 @@ services:
     # TODO: Do we need restart-functionality?
     image: jobboard-backend:1.0.0
     build: 
-      context: ./backend
+      context: .
       dockerfile: Dockerfile
     ports:
       - 3080:3080 # Depends on what port is specified in backend
@@ -40,17 +40,8 @@ services:
       MONGO_HOST: "mongodb"
       MONGO_PORT: "27018"
     volumes:
-      - ./backend:/usr/src/backend # Mount the backend code directory
-      - /usr/src/backend/node_modules/
-
-  frontend:
-    build:
-      context: frontend
-    ports:
-      - "3000:3000"  # Depends on what port is specified in frontend1
-    volumes:
-      - ./frontend:/usr/src/frontend  # Mount the frontend1 code directory
-      - /usr/src/frontend/node_modules/
+      - ./:/usr/src/
+      - /usr/src/node_modules/
 
 volumes:
   data:
