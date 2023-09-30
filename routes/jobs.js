@@ -26,17 +26,19 @@ router.post("/", async (req, res) => {
 
 router
     .route("/:id")
-    .get((req, res) => {
-        const jobId = req.params.id;
-        // code for get query
+    .get(async (req, res) => {
+        const job = await Job.findById(req.params.id)
+        if (job == null) res.redirect('/')
+        res.render("jobs/show", {job: job})
+
     })
     .put((req, res) => {
-        const jobId = req.params.id;
         // code for update query
+
         })
     .delete((req, res) => {
-        const jobId = req.params.id;
         // code for delete query
+
         })
 
 module.exports = router
