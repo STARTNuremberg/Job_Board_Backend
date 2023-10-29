@@ -3,7 +3,11 @@ const Job = require("./../models/job")
 const router = express.Router()
 
 router.get("/", (req, res) => {
-    res.send("all jobs")
+    res.send([
+        {"id": 1, "title": "Job 1"},
+        {"id": 2, "title": "Job 2"},
+        {"id": 3, "title": "Job 3"},
+    ])
 })
 
 router.get("/new", ((req, res) => {
